@@ -1,0 +1,132 @@
+/* .scroll {
+    background-color: #a855f7;
+    overflow-y: scroll;
+    overflow-x: scroll;
+} */
+
+/* Glow Text */
+.neon-text {
+    color: #fff;
+    text-shadow: 0 0 10px #a855f7, 0 0 20px #ec4899, 0 0 40px #3b82f6;
+}
+
+/* Neon Input */
+.neon-box {
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.6), 0 0 20px rgba(168, 85, 247, 0.5);
+    transition: all 0.3s ease;
+}
+
+.neon-box:focus {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.9), 0 0 40px rgba(168, 85, 247, 0.8);
+}
+
+/* Buttons */
+.neon-btn {
+    background: linear-gradient(135deg, #3b82f6, #a855f7, #ec4899);
+    background-size: 300% 300%;
+    animation: gradientMove 6s infinite alternate;
+    color: white;
+    font-weight: bold;
+    padding: 0.6rem 1.5rem;
+    border-radius: 999px;
+    box-shadow: 0 0 10px #a855f7, 0 0 20px #ec4899;
+    transition: all 0.3s ease-in-out;
+}
+
+.neon-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #ec4899, 0 0 40px #a855f7, 0 0 60px #3b82f6;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Sticky Notes */
+.sticky-note {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    border-radius: 12px;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    background: linear-gradient(135deg, #3b82f6cc, #a855f7cc, #ec4899cc);
+    background-size: 200% 200%;
+    animation: gradientMove 8s infinite alternate;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+}
+
+.sticky-note:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.9), 0 0 40px rgba(168, 85, 247, 0.8);
+}
+
+/* Options hidden initially */
+.note-options {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.note-options.show {
+    opacity: 1;
+    max-height: 100px;
+}
+
+/* Icon Buttons inside note */
+.icon-btn {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.icon-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.9), 0 0 30px rgba(59, 130, 246, 0.8);
+}
+
+/* Hide default cursor */
+* {
+    cursor: none !important;
+}
+
+/* Main rose cursor */
+#roseCursor {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 0 6px rgba(220, 20, 60, 0.7));
+    z-index: 9999;
+}
+
+/* Sparkle trail effect */
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 18px;
+    color: #facc15;
+    /* golden yellow */
+    animation: sparkleFade 0.8s ease-out forwards;
+}
+
+@keyframes sparkleFade {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.5) translateY(-15px);
+    }
+}
+

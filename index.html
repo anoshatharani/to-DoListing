@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>To-DoList</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="scroll relative min-h-screen overflow-hidden"> <!-- 🔥 Video Background --> <video autoplay muted loop
+        playsinline class="absolute top-0 left-0 w-full h-full object-cover -z-10">
+        <source src="videos/bg.mp4" type="video/mp4">
+    </video> <!-- Overlay -->
+    <div class="absolute top-0 left-0 w-full h-full bg-black/70 -z-5"></div>
+    <div class=" relative w-full max-w-6xl mx-auto p-6 text-white"> <!-- Heading -->
+        <h1 id="pageTitle" class="text-4xl font-bold text-center mb-6 neon-text">📌 TO-DO LISTING</h1> <!-- Input -->
+        <div class="flex gap-2 mb-4"> <input id="taskInput" type="text" placeholder="Write your task..."
+                class="flex-1 px-4 py-2 rounded-lg bg-neutral-900/70 border border-neutral-700 focus:ring-2 focus:ring-pink-500 outline-none transition neon-box" />
+            <button id="addBtn" class="neon-btn">Add</button>
+        </div> <!-- Global Edit Mode -->
+        <div class="flex justify-end mb-6"> <button id="editModeBtn" class="neon-btn bg-purple-600">✏ Edit</button>
+        </div> <!-- Sticky Notes -->
+        <div id="taskBoard" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+    <div id="roseCursor">🌹</div>
+    <script src="script.js"></script>
+</body>
+
+</html>
