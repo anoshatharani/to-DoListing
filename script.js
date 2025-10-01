@@ -1,19 +1,40 @@
 
 // --------------------ye Editable heading hai-------------------
+// --------------------ye Editable heading hai-------------------
 document.addEventListener("DOMContentLoaded", () => {
-  const pageTitle = document.getElementById("pageTitle");
+    const pageTitle = document.getElementById("pageTitle");
+    const HEADING_KEY = 'pageTitleText'; // Local Storage Key
 
-  if (pageTitle) {
-    pageTitle.setAttribute("contenteditable", "true");
+    // 3. Heading ko load karna
+    const loadTitle = () => {
+        const savedTitle = localStorage.getItem(HEADING_KEY);
+        if (savedTitle) {
+            pageTitle.textContent = savedTitle;
+        }
+    };
 
-    // Jab Enter press ho → blur & save
-    pageTitle.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault(); // new line na bane
-        pageTitle.blur();   // edit mode se bahar
-      }
-    });
-  }
+    // 4. Heading ko save karna
+    const saveTitle = () => {
+        localStorage.setItem(HEADING_KEY, pageTitle.textContent);
+    };
+
+    if (pageTitle) {
+        pageTitle.setAttribute("contenteditable", "true");
+
+        // Page load hone par heading load karein
+        loadTitle(); 
+
+        // Jab Enter press ho blur & save
+        pageTitle.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault(); // new line na bane
+                pageTitle.blur();   // edit mode se bahar
+            }
+        });
+        
+        // Jab user edit karna band kare (blur ho), tab save karein
+        pageTitle.addEventListener("blur", saveTitle);
+    }
 });
 
 // -----------------todo listing---------------------
@@ -127,9 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
-
 // --------------------ye rose wala cursor hai---------------
 const roseCursor = document.getElementById("roseCursor");
 let lastSparkle = 0;
@@ -158,3 +176,31 @@ document.addEventListener("mousemove", (e) => {
   }
 });
 
+// ----------------local storage 
+// 1. Tasks ko Local Storage mein save karna
+    const saveTasks = () => {
+        // TaskBoard ke saare 'sticky-note' elements ka data nikalte hain
+        const tasks = [];
+        document.querySelectorAll(".sticky-note").forEach(note => {
+            // Hum span element se text nikalenge
+            const taskTextElement = note.querySelector('span');
+            if (taskTextElement) {
+                tasks.push(taskTextElement.textContent);
+            }
+        });
+        
+        // Array ko JSON stringify karke save karein
+        localStorage.setItem('todoTasksData', JSON.stringify(tasks));
+    };
+
+    // 2. Tasks ko Local Storage se load karna
+    const loadTasks = () => {
+        const tasksString = localStorage.getItem('todoTasksData');
+        if (tasksString) {
+            const tasks = JSON.parse(tasksString);
+            tasks.forEach(taskText => {
+                // Har saved task ke liye 'createSticky' function call karein
+                createSticky(taskText, false); // false se pata chalta hai ki hum load kar rahe hain
+            });
+        }
+    };
