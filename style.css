@@ -1,8 +1,8 @@
-/* .scroll {
-    background-color: #a855f7;
-    overflow-y: scroll;
+.scroll {
+    /* background-color: #a855f7; */
+    overflow-y: scroll !important;
     overflow-x: scroll;
-} */
+}
 
 /* Glow Text */
 .neon-text {
@@ -97,7 +97,6 @@
 * {
     cursor: none !important;
 }
-
 /* Main rose cursor */
 #roseCursor {
     position: fixed;
